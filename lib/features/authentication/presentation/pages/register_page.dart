@@ -1,5 +1,6 @@
-
+import 'package:expense_tracker_app/constants/constants.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_cubit.dart';
+import 'package:expense_tracker_app/features/authentication/presentation/widgets/auth_panar.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -66,12 +67,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: size.height * 0.1),
-                  Text(
-                    "Create Account",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  Text("Create Account", style: TextStyle()),
-                  SizedBox(height: size.height * 0.18),
+                  AuthPanar(),
+                  SizedBox(height: size.height * 0.1),
                   // email
                   Text("NAME", style: TextStyle(fontSize: 20)),
                   SizedBox(height: size.height * 0.01),
@@ -107,7 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     onPressed: widget.togglePages,
                     child: Text(
                       "Already have an account, loing here",
-                      style: TextStyle(color: theme.inversePrimary),
+                      style: TextStyle(color: theme.secondary),
                     ),
                   ),
 
@@ -119,7 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                     child: Text(
                       "SIGN UP",
-                      style: TextStyle(color: theme.inversePrimary),
+                      style: TextStyle(color: ConstantsColors.secondary),
                     ),
                   ),
                 ],

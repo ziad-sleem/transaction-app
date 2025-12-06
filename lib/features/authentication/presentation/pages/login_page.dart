@@ -1,5 +1,7 @@
-
+import 'package:expense_tracker_app/constants/constants.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_cubit.dart';
+import 'package:expense_tracker_app/features/authentication/presentation/pages/auth_page.dart';
+import 'package:expense_tracker_app/features/authentication/presentation/widgets/auth_panar.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -85,21 +87,14 @@ class _LoginPageState extends State<LoginPage> {
           child: Form(
             key: _formKey,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15.0,
-                vertical: 40,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: size.height * 0.1),
-                  Text(
-                    "Login Account",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  Text("Login Account"),
-                  SizedBox(height: size.height * 0.2),
+                  AuthPanar(),
+                  SizedBox(height: size.height * 0.18),
                   // email
                   Text("EMAIL", style: TextStyle(fontSize: 20)),
                   SizedBox(height: size.height * 0.01),
@@ -124,18 +119,17 @@ class _LoginPageState extends State<LoginPage> {
                   Align(
                     alignment: Alignment.bottomRight,
                     child: TextButton(
-
                       onPressed: () => openForgotPasswordBox(),
                       child: Text('Forget password'),
                     ),
                   ),
                   SizedBox(height: size.height * 0.03),
-                  
+
                   TextButton(
                     onPressed: widget.togglePages,
                     child: Text(
                       'Don\'t have and account? Register.',
-                      style: TextStyle(color: colorScheme.inversePrimary),
+                      style: TextStyle(color: colorScheme.primary),
                     ),
                   ),
                   ElevatedButton(
@@ -147,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: Text(
                       "LOGIN",
-                      style: TextStyle(color: colorScheme.inversePrimary),
+                      style: TextStyle(color: ConstantsColors.secondary),
                     ),
                   ),
                 ],
@@ -159,4 +153,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-

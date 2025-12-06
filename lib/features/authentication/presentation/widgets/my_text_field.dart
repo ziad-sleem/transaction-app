@@ -58,7 +58,7 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
             : widget.emailOrPasswordOrUser == 'user'
             ? Icon(Icons.person)
             : Icon(Icons.abc_outlined),
-        prefixIconColor: ConstantsColors.secondary,
+        prefixIconColor: ConstantsColors.primary,
         filled: true,
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
@@ -77,7 +77,7 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
             ? IconButton(
                 icon: Icon(
                   _obscurePassword ? Icons.visibility_off : Icons.visibility,
-                  color: ConstantsColors.secondary,
+                  color: ConstantsColors.primary,
                 ),
                 onPressed: () {
                   setState(() {
