@@ -1,16 +1,27 @@
-# expense_tracker_app
+FlowPay
 
-A new Flutter project.
+FlowPay is a fast and secure mobile app for sending, receiving, and managing money.
+It offers **instant transfers**, **smart expense tracking**, and a **simple modern interface** — designed for reliability, privacy, and effortless financial control.
 
-## Getting Started
+---
+Features
 
-This project is a starting point for a Flutter application.
+ 🔐 User Authentication (Login / Register)
+ 💸 Send & Receive Money
+ 📥 Add Transactions
+ 📊 Expense Tracking & History
+ ⚡ Instant & Secure Data Sync (Firebase)
+ 🎨 Clean, Modern, Responsive UI
+ ☁️ Cloud Storage / Firestore Integration
+ 🧱 Cubit State Management
 
-A few resources to get you started if this is your first Flutter project:
+---
+Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Flutter
+Dart
+Firebase (Auth, Firestore, Storage)
+Cubit / Flutter Bloc
+Pub.dev Packages
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
