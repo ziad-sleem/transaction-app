@@ -28,7 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 19),
 
               // ---- NAME ----
               BlocBuilder<AuthCubit, AuthState>(
