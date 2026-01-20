@@ -4,6 +4,8 @@ import 'package:expense_tracker_app/features/authentication/presentation/cubit/a
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_state.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/pages/auth_page.dart';
 import 'package:expense_tracker_app/features/navigation_bar_page.dart/presentation/pages/navigation_page.dart';
+import 'package:expense_tracker_app/features/notification/notification_initializer.dart';
+import 'package:expense_tracker_app/features/notification/notification_scheduler.dart';
 import 'package:expense_tracker_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize notifications
+  await NotificationInitializer.init();
+
+  // Schedule daily reminder once
+  await NotificationScheduler.scheduleDailyReminder();
   runApp(const MyApp());
 }
 

@@ -1,7 +1,6 @@
 import 'package:expense_tracker_app/constants/constants.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_cubit.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_state.dart';
-import 'package:expense_tracker_app/features/home/data/data.dart';
 import 'package:expense_tracker_app/features/home/presentation/cubit/transaction_cubit.dart';
 import 'package:expense_tracker_app/features/home/presentation/widgets/balance_widget.dart';
 import 'package:expense_tracker_app/features/home/presentation/widgets/transaction_widget.dart';
