@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseTransactionRepo implements TransactionRepo {
   final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
+  
   @override
   Future<void> addTransaction(TransactionModel transaction) async {
     try {
