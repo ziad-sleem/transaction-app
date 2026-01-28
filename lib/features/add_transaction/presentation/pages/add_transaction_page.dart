@@ -1,4 +1,4 @@
-import 'package:expense_tracker_app/constants/constants.dart';
+import 'package:expense_tracker_app/core/constants/constants.dart';
 import 'package:expense_tracker_app/features/add_transaction/presentation/cubit/add_transaction_cubit.dart';
 import 'package:expense_tracker_app/features/add_transaction/presentation/widgets/gradient_amount_field.dart';
 import 'package:expense_tracker_app/features/add_transaction/presentation/widgets/gradient_date_field.dart';

@@ -7,10 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'transaction_state.dart';
 
 class TransactionCubit extends Cubit<TransactionState> {
-  TransactionCubit() : super(TransactionInitial());
+  TransactionCubit(this.firebaseTransactionRepo) : super(TransactionInitial());
 
-  final FirebaseTransactionRepo firebaseTransactionRepo =
-      FirebaseTransactionRepo();
+  final FirebaseTransactionRepo firebaseTransactionRepo;
 
   StreamSubscription? _sub;
 

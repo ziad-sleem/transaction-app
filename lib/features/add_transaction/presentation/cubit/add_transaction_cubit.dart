@@ -6,10 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'add_transaction_state.dart';
 
 class AddTransactionCubit extends Cubit<AddTransactionState> {
-  AddTransactionCubit() : super(AddTransactionInitial());
+  AddTransactionCubit(this.firebaseTransactionRepo) : super(AddTransactionInitial());
 
-  final FirebaseTransactionRepo firebaseTransactionRepo =
-      FirebaseTransactionRepo();
+  final FirebaseTransactionRepo firebaseTransactionRepo;
 
   Future<void> addTransaction(TransactionModel transaction) async {
     try {

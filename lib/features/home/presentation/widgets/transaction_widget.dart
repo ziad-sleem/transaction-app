@@ -1,4 +1,5 @@
-import 'package:expense_tracker_app/constants/constants.dart';
+import 'package:expense_tracker_app/core/constants/constants.dart';
+import 'package:expense_tracker_app/core/di/service_locator.dart';
 import 'package:expense_tracker_app/features/add_transaction/domain/models/transaction_model.dart';
 import 'package:expense_tracker_app/features/home/presentation/widgets/transaction_icon.dart';
 import 'package:expense_tracker_app/features/transaction%20details/presentation/cubit/transaction_details_cubit.dart';
@@ -23,7 +24,7 @@ class TransactionWidget extends StatelessWidget {
         context,
         MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => TransactionDetailsCubit(),
+            create: (context) => getIt<TransactionDetailsCubit>(),
             child: TransactionDetailsPage(transaction: transaction),
           ),
         ),

@@ -1,4 +1,4 @@
-import 'package:expense_tracker_app/constants/constants.dart';
+import 'package:expense_tracker_app/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class NoteTextField extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:expense_tracker_app/constants/constants.dart';
+import 'package:expense_tracker_app/core/constants/constants.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_cubit.dart';
 import 'package:expense_tracker_app/features/home/presentation/cubit/transaction_cubit.dart';
 import 'package:expense_tracker_app/features/home/presentation/widgets/income_expenses_widget.dart';
