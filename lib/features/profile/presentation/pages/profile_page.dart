@@ -1,5 +1,3 @@
-import 'package:expense_tracker_app/constants/constants.dart';
-import 'package:expense_tracker_app/features/authentication/data/firebase_auth_repo.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_cubit.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_state.dart';
 import 'package:expense_tracker_app/features/transaction%20details/presentation/widgets/my_button.dart';

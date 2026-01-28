@@ -1,3 +1,4 @@
+import 'package:expense_tracker_app/core/di/service_locator.dart';
 import 'package:expense_tracker_app/features/authentication/data/firebase_auth_repo.dart';
 import 'package:expense_tracker_app/features/authentication/domain/repos/auth_repo.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_cubit.dart';
@@ -22,6 +23,8 @@ void main() async {
 
   // Schedule daily reminder once
   await NotificationScheduler.scheduleDailyReminder();
+
+  setup();
   runApp(const MyApp());
 }
 
@@ -33,11 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        final AuthRepo authRepo = FirebaseAuthRepo();
-        final cubit = AuthCubit(authRepo: authRepo);
-        // Check authentication state when app starts
-        cubit.checkAuth();
-        return cubit;
+        return getIt<AuthCubit>()..checkAuth();
       },
       child: Builder(
         builder: (context) {

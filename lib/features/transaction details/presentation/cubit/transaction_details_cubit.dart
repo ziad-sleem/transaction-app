@@ -4,10 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'transaction_details_state.dart';
 
 class TransactionDetailsCubit extends Cubit<TransactionDetailsState> {
-  TransactionDetailsCubit() : super(TransactionDetailsInitial());
+  TransactionDetailsCubit(this.firebaseTransactionRepo) : super(TransactionDetailsInitial());
 
-  final FirebaseTransactionRepo firebaseTransactionRepo =
-      FirebaseTransactionRepo();
+  final FirebaseTransactionRepo firebaseTransactionRepo;
 
   // delete transactin
   Future<void> deleteTransaction(String transactionId) async {

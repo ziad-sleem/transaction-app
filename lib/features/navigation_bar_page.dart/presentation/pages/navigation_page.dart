@@ -1,4 +1,5 @@
-import 'package:expense_tracker_app/constants/constants.dart';
+import 'package:expense_tracker_app/core/constants/constants.dart';
+import 'package:expense_tracker_app/core/di/service_locator.dart';
 import 'package:expense_tracker_app/features/add_transaction/presentation/cubit/add_transaction_cubit.dart';
 import 'package:expense_tracker_app/features/add_transaction/presentation/pages/add_transaction_page.dart';
 import 'package:expense_tracker_app/features/home/presentation/pages/home_page.dart';
@@ -28,7 +29,7 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<TransactionCubit>(
-      create: (context) => TransactionCubit()..getTransactions(),
+      create: (context) => getIt<TransactionCubit>()..getTransactions(),
       child: Scaffold(
         //! the page , IndexStack for make the pages load for one time not every time i nav to it
         body: IndexedStack(
@@ -36,7 +37,7 @@ class _NavigationPageState extends State<NavigationPage> {
           children: [
             _pages[0], // HomePage
             BlocProvider(
-              create: (context) => AddTransactionCubit(),
+              create: (context) => getIt<AddTransactionCubit>(),
               child: _pages[1], // AddTransactionPage
             ),
             _pages[2], // StatsPage

@@ -4,7 +4,9 @@ import 'package:expense_tracker_app/features/add_transaction/domain/repos/transa
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseTransactionRepo implements TransactionRepo {
-  final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+  final FirebaseFirestore firebaseFirestore ;
+
+  FirebaseTransactionRepo({required this.firebaseFirestore});
   
   @override
   Future<void> addTransaction(TransactionModel transaction) async {

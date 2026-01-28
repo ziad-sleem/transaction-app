@@ -1,4 +1,4 @@
-import 'package:expense_tracker_app/constants/constants.dart';
+import 'package:expense_tracker_app/core/constants/constants.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_cubit.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/widgets/auth_panar.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/widgets/my_text_field.dart';
