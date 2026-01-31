@@ -1,4 +1,6 @@
+import 'package:expense_tracker_app/core/constants/app_media_query.dart';
 import 'package:expense_tracker_app/core/constants/constants.dart';
+import 'package:expense_tracker_app/core/widgets/my_text.dart';
 import 'package:flutter/material.dart';
 
 class AuthPanar extends StatelessWidget {
@@ -6,11 +8,10 @@ class AuthPanar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
+    final mq = MQ(context: context);
     return Container(
       width: double.infinity,
-      height: size.height * 0.1,
+      height: mq.h10(),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -23,23 +24,19 @@ class AuthPanar extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            MyText(
               'FlowPay',
-              style: TextStyle(
-                fontSize: 29,
-                fontWeight: FontWeight.bold,
-                color: ConstantsColors.white,
-                letterSpacing: 2,
-              ),
+
+              fontSize: 29,
+              fontWeight: FontWeight.bold,
+              color: ConstantsColors.white,
             ),
-            const SizedBox(height: 8),
-            Text(
+            SizedBox(height: mq.h1(mobileMultiplier: 0.017)),
+            MyText(
               'Track your expenses effortlessly',
-              style: TextStyle(
-                fontSize: 14,
-                color: ConstantsColors.white.withOpacity(0.9),
-                letterSpacing: 0.5,
-              ),
+
+              fontSize: 14,
+              color: ConstantsColors.white.withOpacity(0.9),
             ),
           ],
         ),

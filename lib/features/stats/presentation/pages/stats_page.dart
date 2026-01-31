@@ -1,4 +1,6 @@
+import 'package:expense_tracker_app/core/constants/app_media_query.dart';
 import 'package:expense_tracker_app/core/constants/constants.dart';
+import 'package:expense_tracker_app/core/widgets/my_text.dart';
 import 'package:expense_tracker_app/features/add_transaction/domain/models/transaction_model.dart';
 import 'package:expense_tracker_app/features/home/presentation/cubit/transaction_cubit.dart';
 import 'package:expense_tracker_app/features/stats/presentation/widgets/chart_widget.dart';
@@ -17,7 +19,7 @@ class _StatsPageState extends State<StatsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final mq = MQ(context: context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -28,13 +30,11 @@ class _StatsPageState extends State<StatsPage> {
               children: [
                 Row(
                   children: [
-                    Text(
+                    MyText(
                       "Statistics",
-                      style: TextStyle(
-                        color: ConstantsColors.black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      color: ConstantsColors.black,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
                     ),
                     const Spacer(),
                     IconButton(
@@ -67,9 +67,9 @@ class _StatsPageState extends State<StatsPage> {
                     if (state is TransactionError) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 40),
-                        child: Text(
+                        child: MyText(
                           state.errorMessage,
-                          style: const TextStyle(color: Colors.redAccent),
+                          color: Colors.redAccent,
                         ),
                       );
                     }
@@ -82,7 +82,7 @@ class _StatsPageState extends State<StatsPage> {
                           : state.expense;
 
                       return SizedBox(
-                        width: size.width,
+                        width: mq.w,
                         child: ChartWidget(
                           transactions: filtered,
                           selectedType: _selectedType,
@@ -178,12 +178,10 @@ class _TypeSwitchTile extends StatelessWidget {
                 color: isSelected ? Colors.white : ConstantsColors.black,
               ),
               const SizedBox(width: 6),
-              Text(
+              MyText(
                 label,
-                style: TextStyle(
-                  color: isSelected ? Colors.white : ConstantsColors.black,
-                  fontWeight: FontWeight.w600,
-                ),
+                color: isSelected ? Colors.white : ConstantsColors.black,
+                fontWeight: FontWeight.w600,
               ),
             ],
           ),

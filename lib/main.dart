@@ -1,6 +1,5 @@
 import 'package:expense_tracker_app/core/di/service_locator.dart';
-import 'package:expense_tracker_app/features/authentication/data/firebase_auth_repo.dart';
-import 'package:expense_tracker_app/features/authentication/domain/repos/auth_repo.dart';
+import 'package:expense_tracker_app/core/widgets/my_text.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_cubit.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_state.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/pages/auth_page.dart';
@@ -68,7 +67,7 @@ class MyApp extends StatelessWidget {
                 if (state is AuthError) {
                   ScaffoldMessenger.of(
                     context,
-                  ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
+                  ).showSnackBar(SnackBar(content: MyText(state.errorMessage)));
                 }
               },
             ),

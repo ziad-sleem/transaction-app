@@ -1,6 +1,7 @@
+import 'package:expense_tracker_app/core/constants/app_media_query.dart';
 import 'package:expense_tracker_app/core/constants/constants.dart';
+import 'package:expense_tracker_app/core/widgets/my_text.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_cubit.dart';
-import 'package:expense_tracker_app/features/authentication/presentation/pages/auth_page.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/widgets/auth_panar.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Forgot Password?'),
+          title: MyText('Forgot Password?'),
           content: MyTextFormField(
             controller: emailController,
             hintText: 'email',
@@ -50,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
             // cancel button
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text('Cancel', style: TextStyle(color: Colors.red)),
+              child: MyText('Cancel', color: Colors.red),
             ),
 
             // reset button
@@ -66,9 +67,9 @@ class _LoginPageState extends State<LoginPage> {
 
                 ScaffoldMessenger.of(
                   context,
-                ).showSnackBar(SnackBar(content: Text(message)));
+                ).showSnackBar(SnackBar(content: MyText(message)));
               },
-              child: Text('Reset', style: TextStyle(color: Colors.green)),
+              child: MyText('Reset', color: Colors.green),
             ),
           ],
         );
@@ -79,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final size = MediaQuery.of(context).size;
+    final mq = MQ(context: context);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
@@ -92,44 +93,44 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: size.height * 0.1),
+                  SizedBox(height: mq.h10()),
                   AuthPanar(),
-                  SizedBox(height: size.height * 0.18),
+                  SizedBox(height: mq.h20(mobileMultiplier: 0.18)),
                   // email
-                  Text("EMAIL", style: TextStyle(fontSize: 20)),
-                  SizedBox(height: size.height * 0.01),
+                  MyText("EMAIL", fontSize: 20),
+                  SizedBox(height: mq.h1()),
 
                   MyTextFormField(
                     controller: emailController,
                     hintText: 'EMAIL',
                     emailOrPasswordOrUser: 'email',
                   ),
-                  SizedBox(height: size.height * 0.02),
+                  SizedBox(height: mq.h2()),
 
                   // password
-                  Text("PASSWORD", style: TextStyle(fontSize: 20)),
-                  SizedBox(height: size.height * 0.01),
+                  MyText("PASSWORD", fontSize: 20),
+                  SizedBox(height: mq.h1()),
 
                   MyTextFormField(
                     controller: passwordController,
                     hintText: "PASSWORD",
                     emailOrPasswordOrUser: 'password',
                   ),
-                  SizedBox(height: size.height * 0.01),
+                  SizedBox(height: mq.h1()),
                   Align(
                     alignment: Alignment.bottomRight,
                     child: TextButton(
                       onPressed: () => openForgotPasswordBox(),
-                      child: Text('Forget password'),
+                      child: MyText('Forget password'),
                     ),
                   ),
-                  SizedBox(height: size.height * 0.03),
+                  SizedBox(height: mq.h3()),
 
                   TextButton(
                     onPressed: widget.togglePages,
-                    child: Text(
+                    child: MyText(
                       'Don\'t have and account? Register.',
-                      style: TextStyle(color: colorScheme.primary),
+                      color: colorScheme.primary,
                     ),
                   ),
                   ElevatedButton(
@@ -139,10 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                         login();
                       }
                     },
-                    child: Text(
-                      "LOGIN",
-                      style: TextStyle(color: ConstantsColors.secondary),
-                    ),
+                    child: MyText("LOGIN", color: ConstantsColors.secondary),
                   ),
                 ],
               ),

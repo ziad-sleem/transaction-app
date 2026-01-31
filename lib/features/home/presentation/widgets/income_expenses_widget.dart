@@ -1,4 +1,5 @@
 import 'package:expense_tracker_app/core/constants/constants.dart';
+import 'package:expense_tracker_app/core/widgets/my_text.dart';
 import 'package:flutter/material.dart';
 
 class IncomeExpensesWidget extends StatelessWidget {
@@ -10,7 +11,8 @@ class IncomeExpensesWidget extends StatelessWidget {
     super.key,
     required this.text,
     required this.amount,
-    required this.isIncome, required this.icon,
+    required this.isIncome,
+    required this.icon,
   });
 
   @override
@@ -37,14 +39,8 @@ class IncomeExpensesWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              text,
-              style: TextStyle(color: ConstantsColors.white, fontSize: 12),
-            ),
-            Text(
-              amount,
-              style: TextStyle(color: ConstantsColors.white, fontSize: 17),
-            ),
+            MyText(text, color: ConstantsColors.white, fontSize: 12),
+            MyText(amount, color: ConstantsColors.white, fontSize: 17),
           ],
         ),
       ],
