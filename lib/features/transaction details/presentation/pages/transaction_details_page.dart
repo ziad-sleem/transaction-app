@@ -1,4 +1,5 @@
 import 'package:expense_tracker_app/core/constants/constants.dart';
+import 'package:expense_tracker_app/core/widgets/my_text.dart';
 import 'package:expense_tracker_app/features/add_transaction/domain/models/transaction_model.dart';
 import 'package:expense_tracker_app/features/home/presentation/widgets/transaction_icon.dart';
 import 'package:expense_tracker_app/features/transaction%20details/presentation/cubit/transaction_details_cubit.dart';
@@ -38,26 +39,20 @@ class TransactionDetailsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
 
                   children: [
-                    Text(
+                    MyText(
                       "\$${transaction.amount}",
-                      style: TextStyle(
-                        color: ConstantsColors.black,
-                        fontSize: 30,
-                      ),
+                      color: ConstantsColors.black,
+                      fontSize: 30,
                     ),
-                    Text(
+                    MyText(
                       transaction.type.name,
-                      style: TextStyle(
-                        color: ConstantsColors.gray,
-                        fontSize: 25,
-                      ),
+                      color: ConstantsColors.gray,
+                      fontSize: 25,
                     ),
-                    Text(
+                    MyText(
                       formatDateTime(transaction.date.toString()),
-                      style: TextStyle(
-                        color: ConstantsColors.gray,
-                        fontSize: 25,
-                      ),
+                      color: ConstantsColors.gray,
+                      fontSize: 25,
                     ),
                   ],
                 ),
@@ -99,7 +94,7 @@ class TransactionDetailsPage extends StatelessWidget {
                 if (state is TransactionDetailsLoaded) {
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Transaction Deleted')),
+                    SnackBar(content: MyText('Transaction Deleted')),
                   );
                 }
               },
@@ -137,15 +132,9 @@ class TransactionDetailsPage extends StatelessWidget {
   Widget infoRow({required String title, required String info}) {
     return Row(
       children: [
-        Text(
-          title,
-          style: TextStyle(color: ConstantsColors.gray, fontSize: 14),
-        ),
+        MyText(title, color: ConstantsColors.gray, fontSize: 14),
         const Spacer(),
-        Text(
-          info,
-          style: TextStyle(color: ConstantsColors.black, fontSize: 14),
-        ),
+        MyText(info, color: ConstantsColors.black, fontSize: 14),
       ],
     );
   }

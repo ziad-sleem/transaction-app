@@ -1,4 +1,6 @@
+import 'package:expense_tracker_app/core/constants/app_media_query.dart';
 import 'package:expense_tracker_app/core/constants/constants.dart';
+import 'package:expense_tracker_app/core/widgets/my_text.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/cubit/auth_cubit.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/widgets/auth_panar.dart';
 import 'package:expense_tracker_app/features/authentication/presentation/widgets/my_text_field.dart';
@@ -39,7 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
     else {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('Please complete all fields')));
+      ).showSnackBar(SnackBar(content: MyText('Please complete all fields')));
     }
   }
 
@@ -54,7 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
-    final size = MediaQuery.of(context).size;
+    final mq = MQ(context: context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -66,45 +68,45 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: size.height * 0.1),
+                  SizedBox(height: mq.h10()),
                   AuthPanar(),
-                  SizedBox(height: size.height * 0.1),
+                  SizedBox(height: mq.h10()),
                   // email
-                  Text("NAME", style: TextStyle(fontSize: 20)),
-                  SizedBox(height: size.height * 0.01),
+                  MyText("NAME", fontSize: 20),
+                  SizedBox(height: mq.h1()),
 
                   MyTextFormField(
                     controller: userNameController,
                     hintText: 'NAME',
                     emailOrPasswordOrUser: 'user',
                   ),
-                  SizedBox(height: size.height * 0.02),
+                  SizedBox(height: mq.h2()),
                   // email
-                  Text("EMAIL", style: TextStyle(fontSize: 20)),
-                  SizedBox(height: size.height * 0.01),
+                  MyText("EMAIL", fontSize: 20),
+                  SizedBox(height: mq.h1()),
 
                   MyTextFormField(
                     controller: emailController,
                     hintText: 'EMAIL',
                     emailOrPasswordOrUser: 'email',
                   ),
-                  SizedBox(height: size.height * 0.02),
+                  SizedBox(height: mq.h2()),
 
                   // password
-                  Text("PASSWORD", style: TextStyle(fontSize: 20)),
-                  SizedBox(height: size.height * 0.01),
+                  MyText("PASSWORD", fontSize: 20),
+                  SizedBox(height: mq.h1()),
 
                   MyTextFormField(
                     controller: passwordController,
                     hintText: "PASSWORD",
                     emailOrPasswordOrUser: 'password',
                   ),
-                  SizedBox(height: size.height * 0.1),
+                  SizedBox(height: mq.h10()),
                   TextButton(
                     onPressed: widget.togglePages,
-                    child: Text(
+                    child: MyText(
                       "Already have an account, loing here",
-                      style: TextStyle(color: theme.secondary),
+                      color: theme.secondary,
                     ),
                   ),
 
@@ -114,10 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         signUp();
                       }
                     },
-                    child: Text(
-                      "SIGN UP",
-                      style: TextStyle(color: ConstantsColors.secondary),
-                    ),
+                    child: MyText("SIGN UP", color: ConstantsColors.secondary),
                   ),
                 ],
               ),

@@ -1,8 +1,10 @@
+import 'package:expense_tracker_app/core/constants/app_media_query.dart';
 import 'package:expense_tracker_app/core/constants/constants.dart';
+import 'package:expense_tracker_app/core/widgets/my_text.dart';
 import 'package:expense_tracker_app/features/add_transaction/presentation/cubit/add_transaction_cubit.dart';
 import 'package:expense_tracker_app/features/add_transaction/presentation/widgets/gradient_amount_field.dart';
 import 'package:expense_tracker_app/features/add_transaction/presentation/widgets/gradient_date_field.dart';
-import 'package:expense_tracker_app/features/add_transaction/presentation/widgets/my_radio_list_tile.dart';
+import 'package:expense_tracker_app/features/add_transaction/presentation/widgets/category_selector_widget.dart';
 import 'package:expense_tracker_app/features/add_transaction/presentation/widgets/not_text_field.dart';
 import 'package:expense_tracker_app/features/add_transaction/domain/models/transaction_model.dart';
 import 'package:expense_tracker_app/features/transaction%20details/presentation/widgets/my_button.dart';
@@ -27,18 +29,20 @@ class _AddTransactionPageState extends State<AddTransactionPage> {
 
   @override
   Widget build(BuildContext context) {
+    final mq = MQ(context: context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsetsGeometry.symmetric(horizontal: 15, vertical: 8),
+          padding: mq.paddingSymmetric(horizontal: 15, vertical: 8),
           child: Center(
             child: Column(
               children: [
                 SizedBox(height: 92),
 
-                Text(
+                MyText(
                   "Add Transaction",
-                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                  fontSize: 23,
+                  fontWeight: FontWeight.bold,
                 ),
                 SizedBox(height: 20),
 
@@ -59,157 +63,101 @@ class _AddTransactionPageState extends State<AddTransactionPage> {
                             ConstantsIcons.category,
                             color: ConstantsColors.gray,
                           ),
-                          Text(
+                          MyText(
                             "Category",
-                            style: TextStyle(
-                              color: ConstantsColors.gray,
-                              fontSize: 15,
-                            ),
+                            color: ConstantsColors.gray,
+                            fontSize: 15,
                           ),
                         ],
                       ),
-                      MyRadioListTile(
-                        title: "Food",
-                        value: TransactionCategory.food,
-                        groupValue: transactionCategory,
+                      SizedBox(height: 12),
+                      CategorySelectorWidget<TransactionCategory>(
+                        selectedValue: transactionCategory,
+                        categories: [
+                          CategoryItem(
+                            value: TransactionCategory.food,
+                            label: "Food",
+                            icon: ConstantsIcons.food,
+                            color: ConstantsColors.pink,
+                          ),
+                          CategoryItem(
+                            value: TransactionCategory.travel,
+                            label: "Travel",
+                            icon: ConstantsIcons.travel,
+                            color: ConstantsColors.deepOrangeAccent,
+                          ),
+                          CategoryItem(
+                            value: TransactionCategory.shopping,
+                            label: "Shopping",
+                            icon: ConstantsIcons.shopping,
+                            color: ConstantsColors.purple,
+                          ),
+                          CategoryItem(
+                            value: TransactionCategory.bills,
+                            label: "Bills",
+                            icon: ConstantsIcons.bills,
+                            color: ConstantsColors.red,
+                          ),
+                          CategoryItem(
+                            value: TransactionCategory.health,
+                            label: "Health",
+                            icon: ConstantsIcons.health,
+                            color: ConstantsColors.green,
+                          ),
+                          CategoryItem(
+                            value: TransactionCategory.entertainment,
+                            label: "Entertainment",
+                            icon: ConstantsIcons.entertainment,
+                            color: ConstantsColors.indigo,
+                          ),
+                          CategoryItem(
+                            value: TransactionCategory.education,
+                            label: "Education",
+                            icon: ConstantsIcons.education,
+                            color: ConstantsColors.tertiary,
+                          ),
+                          CategoryItem(
+                            value: TransactionCategory.salary,
+                            label: "Salary",
+                            icon: ConstantsIcons.salary,
+                            color: ConstantsColors.yellow,
+                          ),
+                          CategoryItem(
+                            value: TransactionCategory.bonus,
+                            label: "Bonus",
+                            icon: ConstantsIcons.bonus,
+                            color: ConstantsColors.tertiary,
+                          ),
+                          CategoryItem(
+                            value: TransactionCategory.freelancing,
+                            label: "Freelancing",
+                            icon: ConstantsIcons.freelancing,
+                            color: ConstantsColors.purple,
+                          ),
+                          CategoryItem(
+                            value: TransactionCategory.investment,
+                            label: "Investment",
+                            icon: ConstantsIcons.investment,
+                            color: ConstantsColors.green,
+                          ),
+                          CategoryItem(
+                            value: TransactionCategory.gifts,
+                            label: "Gifts",
+                            icon: ConstantsIcons.gifts,
+                            color: ConstantsColors.pink,
+                          ),
+                          CategoryItem(
+                            value: TransactionCategory.other,
+                            label: "Other",
+                            icon: ConstantsIcons.other,
+                            color: ConstantsColors.gray,
+                          ),
+                        ],
                         onChanged: (value) {
                           setState(() {
                             transactionCategory = value;
                           });
                         },
-                        enabled: true,
-                      ),
-                      MyRadioListTile(
-                        title: "Travel",
-                        value: TransactionCategory.travel,
-                        groupValue: transactionCategory,
-                        onChanged: (value) {
-                          setState(() {
-                            transactionCategory = value;
-                          });
-                        },
-                        enabled: true,
-                      ),
-                      MyRadioListTile(
-                        title: "Shopping",
-                        value: TransactionCategory.shopping,
-                        groupValue: transactionCategory,
-                        onChanged: (value) {
-                          setState(() {
-                            transactionCategory = value;
-                          });
-                        },
-                        enabled: true,
-                      ),
-                      MyRadioListTile(
-                        title: "Bills",
-                        value: TransactionCategory.bills,
-                        groupValue: transactionCategory,
-                        onChanged: (value) {
-                          setState(() {
-                            transactionCategory = value;
-                          });
-                        },
-                        enabled: true,
-                      ),
-                      MyRadioListTile(
-                        title: "Health",
-                        value: TransactionCategory.health,
-                        groupValue: transactionCategory,
-                        onChanged: (value) {
-                          setState(() {
-                            transactionCategory = value;
-                          });
-                        },
-                        enabled: true,
-                      ),
-                      MyRadioListTile(
-                        title: "Entertainment",
-                        value: TransactionCategory.entertainment,
-                        groupValue: transactionCategory,
-                        onChanged: (value) {
-                          setState(() {
-                            transactionCategory = value;
-                          });
-                        },
-                        enabled: true,
-                      ),
-                      MyRadioListTile(
-                        title: "Education",
-                        value: TransactionCategory.education,
-                        groupValue: transactionCategory,
-                        onChanged: (value) {
-                          setState(() {
-                            transactionCategory = value;
-                          });
-                        },
-                        enabled: true,
-                      ),
-                      MyRadioListTile(
-                        title: "Salary",
-                        value: TransactionCategory.salary,
-                        groupValue: transactionCategory,
-                        onChanged: (value) {
-                          setState(() {
-                            transactionCategory = value;
-                          });
-                        },
-                        enabled: true,
-                      ),
-                      MyRadioListTile(
-                        title: "Bonus",
-                        value: TransactionCategory.bonus,
-                        groupValue: transactionCategory,
-                        onChanged: (value) {
-                          setState(() {
-                            transactionCategory = value;
-                          });
-                        },
-                        enabled: true,
-                      ),
-                      MyRadioListTile(
-                        title: "Free Lancing",
-                        value: TransactionCategory.freelancing,
-                        groupValue: transactionCategory,
-                        onChanged: (value) {
-                          setState(() {
-                            transactionCategory = value;
-                          });
-                        },
-                        enabled: true,
-                      ),
-                      MyRadioListTile(
-                        title: "Investment",
-                        value: TransactionCategory.investment,
-                        groupValue: transactionCategory,
-                        onChanged: (value) {
-                          setState(() {
-                            transactionCategory = value;
-                          });
-                        },
-                        enabled: true,
-                      ),
-                      MyRadioListTile(
-                        title: "Gifts",
-                        value: TransactionCategory.gifts,
-                        groupValue: transactionCategory,
-                        onChanged: (value) {
-                          setState(() {
-                            transactionCategory = value;
-                          });
-                        },
-                        enabled: true,
-                      ),
-                      MyRadioListTile(
-                        title: "Other",
-                        value: TransactionCategory.other,
-                        groupValue: transactionCategory,
-                        onChanged: (value) {
-                          setState(() {
-                            transactionCategory = value;
-                          });
-                        },
-                        enabled: true,
                       ),
                     ],
                   ),
@@ -339,23 +287,23 @@ class _AddTransactionPageState extends State<AddTransactionPage> {
       context: context,
       builder: (BuildContext dialogContext) {
         return AlertDialog(
-          title: const Text('Confirm Transaction'),
+          title: const MyText('Confirm Transaction'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('Amount: \$${transaction.amount.toStringAsFixed(2)}'),
-                Text('Category: ${transaction.category.name}'),
-                Text(
+                MyText('Amount: \$${transaction.amount.toStringAsFixed(2)}'),
+                MyText('Category: ${transaction.category.name}'),
+                MyText(
                   'Date: ${DateFormat('dd MMM yyyy').format(transaction.date)}',
                 ),
                 if (transaction.note != null && transaction.note!.isNotEmpty)
-                  Text('Note: ${transaction.note}'),
+                  MyText('Note: ${transaction.note}'),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Cancel'),
+              child: const MyText('Cancel'),
               onPressed: () {
                 Navigator.of(dialogContext).pop(); // Close the dialog
               },

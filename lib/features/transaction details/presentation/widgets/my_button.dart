@@ -1,9 +1,10 @@
 import 'package:expense_tracker_app/core/constants/constants.dart';
+import 'package:expense_tracker_app/core/widgets/my_text.dart';
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
   final String text;
-  final Function()?  onTap;
+  final Function()? onTap;
   const MyButton({super.key, required this.text, required this.onTap});
 
   @override
@@ -25,13 +26,11 @@ class MyButton extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Text(
+          child: MyText(
             text,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-              color: ConstantsColors.white,
-            ),
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
+            color: ConstantsColors.white,
           ),
         ),
       ),

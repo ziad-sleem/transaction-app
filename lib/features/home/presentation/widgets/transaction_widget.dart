@@ -1,5 +1,6 @@
 import 'package:expense_tracker_app/core/constants/constants.dart';
 import 'package:expense_tracker_app/core/di/service_locator.dart';
+import 'package:expense_tracker_app/core/widgets/my_text.dart';
 import 'package:expense_tracker_app/features/add_transaction/domain/models/transaction_model.dart';
 import 'package:expense_tracker_app/features/home/presentation/widgets/transaction_icon.dart';
 import 'package:expense_tracker_app/features/transaction%20details/presentation/cubit/transaction_details_cubit.dart';
@@ -40,29 +41,22 @@ class TransactionWidget extends StatelessWidget {
           children: [
             TransactionIcon(category: transaction.category),
             SizedBox(width: 8),
-            Text(
+            MyText(
               transaction.category.name,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
             const Spacer(),
             Column(
               children: [
                 transaction.type.name == 'income'
-                    ? Text(
-                        "+ \$${transaction.amount}",
-                        style: TextStyle(fontSize: 16),
-                      )
-                    : Text(
-                        "- \$${transaction.amount}",
-                        style: TextStyle(fontSize: 16),
-                      ),
-                Text(
+                    ? MyText("+ \$${transaction.amount}", fontSize: 16)
+                    : MyText("- \$${transaction.amount}", fontSize: 16),
+                MyText(
                   formatDate(transaction.date.toString()),
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: ConstantsColors.gray,
-                  ),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: ConstantsColors.gray,
                 ),
               ],
             ),

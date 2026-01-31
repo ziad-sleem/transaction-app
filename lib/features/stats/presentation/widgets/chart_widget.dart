@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:expense_tracker_app/core/constants/constants.dart';
+import 'package:expense_tracker_app/core/widgets/my_text.dart';
 import 'package:expense_tracker_app/features/add_transaction/domain/models/transaction_model.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -32,21 +33,20 @@ class ChartWidget extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 10),
-        Text(
-          rangeLabel,
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-        ),
+        MyText(rangeLabel, fontSize: 14, fontWeight: FontWeight.w400),
         const SizedBox(height: 5),
-        Text(
+        MyText(
           "\$${totalAmount.toStringAsFixed(2)}",
-          style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+          fontSize: 26,
+          fontWeight: FontWeight.bold,
         ),
         const SizedBox(height: 8),
-        Text(
+        MyText(
           selectedType == TransactionType.income
               ? "Total income"
               : "Total expense",
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
         ),
         const SizedBox(height: 20),
         SizedBox(
